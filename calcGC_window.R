@@ -19,7 +19,9 @@ calcGC_window = function(file, fasta = NULL, window, pattern = character()){
   # check if the correct data have been provided
   if(length(fasta) == 0){
     
+    print("reading fasta file")
     fasta = readDNAStringSet(filepath = file)
+    print("fasta file imported")
     
   }
   
@@ -35,6 +37,7 @@ calcGC_window = function(file, fasta = NULL, window, pattern = character()){
   
   GCcontent = createWindows(data = chrWidth, window = window)
   
+  print("calculating GC content")
   list_seqs = strsplit(as.character((getSeq(fasta, as(GCcontent, "GRanges")))), split = "")
   GCcontent$gc = sapply(list_seqs, GC)
   
