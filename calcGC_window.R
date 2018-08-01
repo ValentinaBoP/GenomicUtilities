@@ -1,9 +1,17 @@
-calcGC_window = function(file, fasta = NULL, window, pattern = character()){
+calcGC_window = function(file = NULL, fasta = NULL, window, pattern = character()){
   
   # Valentina Peona 01/07/2018
   
-  # usage:
+  # usage by directly reading the fasta file
   # GCcontent_df = calcGC_window(file = "genome.fasta", window = 10000)
+  
+  # usage with the fasta file already imported as DNAStringSet object
+  # require(Biostrings)
+  # fasta = readDNAStringSet(filepath = "path/to/genome.fasta")
+  # GCcontent_df = calcGC_window(file = character(), fasta = fasta, window = 10000)
+  
+  # example: calculate GC content on only two chromosomes
+  # GCcontent_df = calcGC_window(file = character(), fasta = fasta, window = 10000, pattern = c("chr1", "chr2"))
   
   # required libraries
   require(Biostrings)
@@ -17,7 +25,12 @@ calcGC_window = function(file, fasta = NULL, window, pattern = character()){
   }
   
   # check if the correct data have been provided
-  if(length(fasta) == 0){
+  if(length(fasta) == 0 & length(file) == 0){
+    
+    print("you must provide either the filepath to the fasta file or a DNAStringSet object")
+    stop()
+    
+  } else if (length(fasta) == 0 & length(file) > 0){
     
     print("reading fasta file")
     fasta = readDNAStringSet(filepath = file)
