@@ -1,5 +1,10 @@
 calcGC_window = function(file, fasta = NULL, window, pattern = character()){
   
+  # Valentina Peona 01/07/2018
+  
+  # usage:
+  # GCcontent_df = calcGC_window(file = "genome.fasta", window = 10000)
+  
   # required libraries
   require(Biostrings)
   require(BSgenome)
@@ -32,6 +37,8 @@ calcGC_window = function(file, fasta = NULL, window, pattern = character()){
   
   list_seqs = strsplit(as.character((getSeq(fasta, as(GCcontent, "GRanges")))), split = "")
   GCcontent$gc = sapply(list_seqs, GC)
+  
+  return(GCcontent)
   
 }
 
