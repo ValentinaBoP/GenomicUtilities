@@ -3,14 +3,17 @@ calcGC_window = function(file = NULL, fasta = NULL, window, pattern = character(
   # Valentina Peona 01/07/2018
   
   # usage by directly reading the fasta file
+  # source("GC_content.R")
   # GCcontent_df = calcGC_window(file = "genome.fasta", window = 10000)
   
   # usage with the fasta file already imported as DNAStringSet object
   # require(Biostrings)
+  # source("GC_content.R")
   # fasta = readDNAStringSet(filepath = "path/to/genome.fasta")
   # GCcontent_df = calcGC_window(file = character(), fasta = fasta, window = 10000)
   
   # example: calculate GC content on only two chromosomes
+  # source("GC_content.R")
   # GCcontent_df = calcGC_window(file = character(), fasta = fasta, window = 10000, pattern = c("chr1", "chr2"))
   
   # required libraries
