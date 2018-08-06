@@ -16,9 +16,16 @@ calcGC_window = function(file = NULL, fasta = NULL, window, pattern = character(
   # source("GC_content.R")
   # GCcontent_df = calcGC_window(file = character(), fasta = fasta, window = 10000, pattern = c("chr1", "chr2"))
   
+  # it's advisable to run the function looping over the scaffolds/chromosomes of interest
+  # pattern = paste("chr", 1:23, sep = "")
+  # for(chr in pattern){
+  #   GCcontent_df = rbind(GCcontent_df, calcGC_window(file = character(), fasta = fasta, window = 10000, pattern = chr)
+  # }
+  
   # required libraries
   require(Biostrings)
   require(BSgenome)
+  require(seqinr)
   
   # check window size
   if(length(window) == 0 | window <= 0){
